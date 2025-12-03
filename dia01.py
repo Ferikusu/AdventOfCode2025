@@ -66,5 +66,19 @@ print("Hola")
 
 datos = open("dia01-input.txt", "r").read().splitlines()
 
+posicion = 50
+contador = 0
+
 for linea in datos:
-    print(linea)
+    if linea[0] == "L":
+        posicion -= int(linea[1:])
+        if posicion < 0:
+            posicion += 100
+    else:
+        posicion += int(linea[1:])
+        if posicion > 99:
+            posicion -= 100
+    if posicion == 0:
+        contador += 1
+
+print("La contraseña es:", contador)

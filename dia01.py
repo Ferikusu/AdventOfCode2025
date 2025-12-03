@@ -63,3 +63,8 @@ Because the dial points at 0 a total of three times during this process, the pas
 Analyze the rotations in your attached document. What's the actual password to open the door?
 """
 print("Hola")
+
+datos = open("dia01-input.txt", "r").read().splitlines()
+
+for linea in datos:
+    print(linea)

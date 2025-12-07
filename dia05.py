@@ -100,15 +100,11 @@ while modificados != 0:
     rangos2 = nuevos_rangos.copy()
     print(modificados)
 
-#print(nuevos_rangos)
 total_frescos = 0
 for nr in nuevos_rangos:
     total_frescos += nr[1] - nr[0] + 1 
 
 print(total_frescos)
-
-# Respuesta incorrecta. ¿Se solaparan los rangos?
-    
     
 
 

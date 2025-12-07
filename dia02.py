@@ -65,6 +65,7 @@ for r in lista_rangos:
                 suma += int(sn)
 
 print("La suma de los IDs inválidos es:", suma)
+# Resultado parte 1: 13108371860
 
 """
 --- Part Two ---
@@ -94,8 +95,6 @@ What do you get if you add up all of the invalid IDs using these new rules?
 
 suma = 0
 
-codigos_invalidos = set()
-
 for r in lista_rangos:
     for n in range(r[0], r[1]+1):
         sn = str(n)
@@ -103,8 +102,9 @@ for r in lista_rangos:
         for i in range(1,longitud // 2 + 1):
             if longitud%i == 0 and sn[:i]*(longitud//i) == sn:
                 print(sn)
-                codigos_invalidos.add(int(sn))
-
-suma = sum(codigos_invalidos)
+                suma += int(sn)
+                break
 
 print("La suma de los IDs inválidos es:", suma)
+
+# Resultado parte 2: 22471660255

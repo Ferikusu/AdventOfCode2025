@@ -49,6 +49,8 @@ for id in ids:
 
 print(frescos)
 
+#Resultado: 577
+
 """
 --- Part Two ---
 The Elves start bringing their spoiled inventory to the trash chute at the back of the kitchen.
@@ -98,7 +100,6 @@ while modificados != 0:
         else:
             modificados += 1
     rangos2 = nuevos_rangos.copy()
-    print(modificados)
 
 total_frescos = 0
 for nr in nuevos_rangos:
@@ -106,7 +107,7 @@ for nr in nuevos_rangos:
 
 print(total_frescos)
     
-
+#Resultado: 350513176552950
 
 
 

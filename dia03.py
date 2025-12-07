@@ -58,3 +58,26 @@ Now, the joltages are much larger:
 The total output joltage is now much larger: 987654321111 + 811111111119 + 434234234278 + 888911112111 = 3121910778619.
 What is the new total output joltage?
 """
+
+def rebajar(cadena, tam):
+    if len(cadena) < tam or tam <= 0:
+        raise ValueError("Error: La cadena es más pequeña que el tamaño requerido o el tamaño es menor que 1.")
+    elif len(cadena) == tam:
+        return cadena
+    elif tam == 1:
+        return max(cadena)
+    else:
+        co = sorted(cadena, reverse=True)
+        for c in co:
+            pc = cadena.index(c)
+            if(len(cadena[pc:]) >= tam):
+                return cadena[pc] + rebajar(cadena[pc+1:], tam-1)
+
+joltage = 0
+
+for d in datos:
+    joltage += int(rebajar(d, 12))
+
+print("La suma total de la salida de voltaje es:", joltage)
+
+# Resultado parte 2: 168798209663590

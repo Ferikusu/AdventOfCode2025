@@ -3,7 +3,7 @@
 
 """
 Félix Rodríguez Díaz
-8/12/25
+9/12/25
 
 --- Day 6: Trash Compactor ---
 After helping the Elves in the kitchen, you were taking a break and helping them re-enact a movie scene when you over-enthusiastically jumped into the garbage chute!
@@ -51,3 +51,65 @@ for c in range(len(datos_limpios[0])):
 print(resultado)
 
 # Resultado 6605396225322
+
+"""
+--- Part Two ---
+The big cephalopods come back to check on how things are going. When they see that your grand total doesn't match the one expected by the worksheet, they realize they forgot to explain how to read cephalopod math.
+Cephalopod math is written right-to-left in columns. Each number is given in its own column, with the most significant digit at the top and the least significant digit at the bottom. (Problems are still separated with a column consisting only of spaces, and the symbol at the bottom of the problem is still the operator to use.)
+Here's the example worksheet again:
+123 328  51 64 
+ 45 64  387 23 
+  6 98  215 314
+*   +   *   +  
+Reading the problems right-to-left one column at a time, the problems are now quite different:
+    The rightmost problem is 4 + 431 + 623 = 1058
+    The second problem from the right is 175 * 581 * 32 = 3253600
+    The third problem from the right is 8 + 248 + 369 = 625
+    Finally, the leftmost problem is 356 * 24 * 1 = 8544
+Now, the grand total is 1058 + 3253600 + 625 + 8544 = 3263827.
+Solve the problems on the math worksheet again. What is the grand total found by adding together all of the answers to the individual problems?
+"""
+
+datos2 = []
+
+for d in datos:
+    datos2.append(list(d))
+
+for c in range(len(datos2[0])):
+    espacios_vacios = True
+    for f in range(filas-1):
+        if datos2[f][c] == " ":
+            espacios_vacios *= True
+        else:
+            espacios_vacios = False
+    if espacios_vacios:
+        for ff in range(filas-1):
+            datos2[ff][c] = "v"
+
+datos_limpios2 = []
+
+for d in datos2[:-1]:
+    datos_limpios2.append("".join(d).split("v"))
+
+resultado2 = 0
+
+for c in range(len(datos_limpios2[0])):
+    if datos_limpios[-1][c] == "+":
+        r2 = 0
+        for z in range(len(datos_limpios2[0][c])):
+            parcial = ""
+            for f in range(filas-1):
+                parcial += datos_limpios2[f][c][z]
+            r2 += int(parcial)
+    else:
+        r2 = 1
+        for z in range(len(datos_limpios2[0][c])):
+            parcial = ""
+            for f in range(filas-1):
+                parcial += datos_limpios2[f][c][z]
+            r2 *= int(parcial)
+    resultado2 += r2
+
+print(resultado2)
+
+# Resultado 11052310600986
